@@ -7,74 +7,17 @@
                     <button @click="setLangNew('cn')">中文</button>
                     <button @click="setLangNew('en')">English</button>
                 </div>
-                <div class="slider-bar">
-                    <TreeMenu></TreeMenu>
-                </div>
-                <div v-for="([ x, y ]) in points">
-                    <div>{{x}}</div>
-                    <div>{{y}}</div>
-                </div>
-
-                <!-- <div class="continer">
-                    <div class="wrap">
-                        <router-view />
-                    </div>
-                </div>-->
+                
             </div>
         </div>
-        <svg id="my-svg" width="160" height="140" xmlns="http://www.w3.org/2000/svg" version="1.1">
-            <line
-                x1="40"
-                x2="120"
-                y1="20"
-                y2="20"
-                stroke="black"
-                stroke-width="20"
-                stroke-linecap="butt"
-                data-start="0" data-duration="10"
-            />
-
-            <line
-                x1="40"
-                x2="120"
-                y1="60"
-                y2="60"
-                stroke="black"
-                stroke-width="20"
-                stroke-linecap="square"
-                data-start="110" data-duration="10"
-            />
-
-            <line
-                x1="40"
-                x2="120"
-                y1="100"
-                y2="100"
-                stroke="black"
-                stroke-width="20"
-                stroke-linecap="round"
-                data-start="0" data-duration="20"
-            />
-        </svg>
-
-
-        <div class="moveTest">
-            <ul>
-                <transition-group name="flip-list" tag="ul">
-                <li v-for="(n,i) in num" :key="n.name" class="list-item">
-                    {{n.name}}
-                </li>
-                </transition-group>
-            </ul>
-            <div @click="changeArr">sss</div>
-        </div>
+        <h1>這是一個空專案</h1>
     </div>
 </template>
 
 <script>
 import i18n from '@/lang/index.js'
-import TreeMenu from "@/views/TreeMenu";
-import Vivus from 'vivus'
+// import TreeMenu from "@/views/TreeMenu";
+// import Vivus from 'vivus'
 
 import {
     mapGetters,
@@ -83,32 +26,21 @@ import {
 
 export default {
     data: () => ({
-        num:[{name:'1'},{name:'2'},{name:'3'},{name:'4'},{name:'5'},{name:'6'}],
-        points: [[ 100, 23 ], [ 200, 85 ], [ 300, 241 ], [ 400, 989 ] ],
+        
     }),
     components: {
-        TreeMenu,
+        
     },
     methods: {
-        changeArr:function(){
-            // alert('123')
-            let save = this.num[0];
-            this.num.shift();
-            this.num.push(save);
-        },
         ...mapActions([
             "setLangNew",
             "setLang"
         ]),
-        myCallback: function() {
 
-        }
 
     },
     mounted: function() {
-        //綁定 DOM 之後
         this.setLangNew('cn');
-        new Vivus('my-svg', {type: 'oneByOne', duration: 200 }, this.myCallback);
 
     },
 }
